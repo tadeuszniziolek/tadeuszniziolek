@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Tadeusz Niziołek</title>
+
+<style>
+
+/* ================= FONT ================= */
+
+@font-face {
+  font-family: "Aileron";
+  src: url("fonts/Aileron-SemiBold.woff2") format("woff2"),
+       url("fonts/Aileron-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Aileron", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: white;
+}
+
+.logo-desktop {
+  position: absolute;
+  top: 50%;
+  right: 1vw;
+  transform: translateY(-50%);
+  max-width: 200px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+/* ================= BACKGROUND ================= */
+
+.background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.layer-base {
+  position: absolute;
+  inset: 0;
+  background: #c10025;
+}
+
+.layer-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,0) var(--gradient-mid, 72%)
+  );
+}
+
+.layer-blue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--blue-width, 50%);
+  background: #0029bf;
+  mix-blend-mode: color-burn;
+}
+
+/* ================= CONTENT ================= */
+
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+}
+
+/* NO TITLE ON DESKTOP */
+
+.mobile-title {
+  display: none;
+}
+
+/* LEFT TEXT */
+
+.left-text {
+  position: absolute;
+  top: 4vh;
+  left: 2.5vw;
+  width: 28vw;
+  max-width: 380px;
+  line-height: 1.5;
+}
+
+/* RIGHT TEXT */
+
+.right-text {
+  position: absolute;
+  top: 4vh;
+  right: 2.5vw;
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* LINKS */
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+
+.hover-underline {
+  text-decoration: none;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
+/* ================= CAROUSEL ================= */
+
+.carousel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42vw;
+  max-width: 750px;
+  height: 65vh;
+  max-height: 700px;
+}
+
+.carousel img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: none;           /* hide all by default */
+}
+
+.carousel img.active {
+  display: block;
+}
+
+/* ================= MOBILE STRUCTURED LAYOUT ================= */
+
+@media (max-aspect-ratio: 1/1) {
+
+  html, body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10vh 6vw 8vh 6vw;
+    gap: 8vh;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* ORDER CONTROL */
+
+  .mobile-title { order: 1; }
+  .carousel     { order: 2; }
+  .left-text    { order: 3; }
+  .right-text   { order: 4; }
+  .logo-mobile { order: 5; }
+
+  /* TITLE */
+  .mobile-title {
+    display: block;
+    font-size: 24px;
+  }
+
+  /* DESCRIPTION */
+  .left-text {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: none;
+    top: auto;
+    left: auto;
+  }
+
+  /* DETAILS */
+  .right-text {
+    position: relative;
+    text-align: left;
+    top: auto;
+    right: auto;
+    width: 100%;
+  }
+
+  /* CAROUSEL */
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+
+    left: auto;
+    top: auto;
+    transform: none !important;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 100%;
+    max-height: none;
+  }
+
+  .carousel img {
+    max-width: 100%;
+    max-height: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* LOGO */
+  .logo-desktop {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+    position: relative;
+    align-self: flex-start;
+    max-width: 120px;
+    margin-top: 4vh;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background">
+  <div class="layer-base"></div>
+  <div class="layer-gradient"></div>
+  <div class="layer-blue"></div>
+</div>
+
+<div class="content">
+
+  <!-- MOBILE -->
+
+  <div class="mobile-title">
+    Tadeusz Niziołek
+  </div>
+
+  <!-- LEFT COLUMN -->
+
+  <div class="left-text">
+
+    Hey!<br><br>
+
+    I am a graphic designer and art director from Poland. I specialize in visual identities, information design and visual communication of states. I also have experience in filmmaking, illustration, photography, type design and multiple other visual arts.
+    <br><br>
+
+    My website is currently under construction. In the meantime you are more than welcome to visit my
+
+    <a href="https://www.instagram.com/tadeusz.niziolek/" target="_blank">instagram</a>
+
+    or simply just email me.
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+
+  <div class="right-text">
+
+    Tadeusz Niziołek<br>
+
+    email<br>
+
+    <a href="https://www.instagram.com/tadeusz.niziolek/" target="_blank" class="hover-underline">
+      instagram
+    </a><br>
+
+    Poznań, Poland, EU
+
+  </div>
+
+  <!-- CAROUSEL -->
+
+  <div class="carousel" id="carousel"></div>
+
+  <img src="tadeusz2.png" alt="Tadeusz Logo" class="logo-desktop">
+  <img src="tadeusz.png" alt="Tadeusz Logo" class="logo-mobile">
+
+</div>
+
+<script>
+
+/* ================= BACKGROUND ================= */
+
+const root = document.documentElement;
+
+document.addEventListener("mousemove", (e) => {
+  const xRatio = e.clientX / window.innerWidth;
+  const yRatio = e.clientY / window.innerHeight;
+
+  const blueWidth = 50 + (xRatio - 0.5) * 6;
+  const gradientMid = 72 - (yRatio - 0.5) * 12;
+
+  root.style.setProperty('--blue-width', blueWidth + '%');
+  root.style.setProperty('--gradient-mid', gradientMid + '%');
+});
+
+/* ============== CAROUSEL MOVEMENT ============== */
+
+const carouselEl = document.getElementById("carousel");
+
+if (window.matchMedia("(min-aspect-ratio: 1/1)").matches) {
+
+  document.addEventListener("mousemove", (e) => {
+
+    const xRatio = e.clientX / window.innerWidth;
+    const yRatio = e.clientY / window.innerHeight;
+
+    const maxX = 10;
+    const maxY = 8;
+
+    const offsetX = (xRatio - 0.5) * 1.5 * maxX;
+    const offsetY = (yRatio - 0.5) * 1.5 * maxY;
+
+    carouselEl.style.transform =
+      `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+
+  });
+
+}
+
+/* ================= CAROUSEL ================= */
+
+const carousel = document.getElementById("carousel");
+const imageFiles = [
+
+  "1.jpg",
+  "2.png",
+  "3.jpg",
+  "4.jpg",
+  "5.jpg",
+  "6.jpg",
+  "7.jpg",
+  "8.jpg",
+  "9.jpg",
+  "10.jpg",
+  "11.jpg",
+  "12.png",
+  "13.jpg",
+  "14.jpg",
+  "15.jpg",
+  "16.jpg",
+  "17.jpg",
+  "18.jpg",
+  "19.jpg",
+  "20.jpg",
+  "21.png",
+  "22.jpg",
+  "23.jpg",
+  "24.jpg",
+  "25.jpg",
+  "26.jpg",
+  "27.jpg",
+  "28.png",
+  "29.jpg",
+  "30.jpg",
+  "31.jpg",
+  "32.jpg",
+  "33.jpg",
+  "34.jpg",
+  "35.jpg",
+  "36.jpg",
+  "37.png",
+  "38.jpg",
+  "39.jpg",
+  "40.jpg"
+
+];
+
+let current = 0;
+const images = [];
+
+imageFiles.forEach((file, index) => {
+  const img = document.createElement("img");
+  img.src = "images/" + file;
+
+  img.onerror = () => {
+    console.warn("Missing image:", file);
+    img.remove();
+  };
+
+  if(index === 0) img.classList.add("active");
+
+  carousel.appendChild(img);
+  images.push(img);
+});
+
+setInterval(() => {
+  images[current].classList.remove("active");
+  current = (current + 1) % images.length;
+  images[current].classList.add("active");
+}, 3000);
+
+</script>
+</body>
+</html>
